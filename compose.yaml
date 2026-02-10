@@ -6,7 +6,6 @@ services:
 
     # ports
     ports:
-      - "5901:5901"  # VNC
-      - "6901:6901"  # noVNC web
-      - "6080:6080"
+      - "5900:5900"  # VNC
+      - "6080:6080"  # noVNC web
     shm_size: "2gb"

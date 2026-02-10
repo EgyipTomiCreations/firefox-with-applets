@@ -28,8 +28,8 @@ docker pull egyiptomi/firefox-with-applets:latest
 docker run -d \
   --name firefox-with-applets \
   --restart always \
-  -p 5901:5901 \
-  -p 6901:6901 \
+  -p 5900:5900 \
+  -p 6080:6080 \
   --shm-size=2g \
   egyiptomi/firefox-with-applets:latest
 ```
@@ -48,8 +48,8 @@ services:
     restart: always
 
     ports:
-      - "5901:5901"  # VNC
-      - "6901:6901"  # noVNC web
+      - "5900:5900"  # VNC
+      - "6080:6080"  # noVNC web
 
     shm_size: "2gb"
 ```
@@ -68,6 +68,14 @@ docker compose down
 
 ---
 
+## Accessing the Container
+
+| Method | Address |
+|-------|---------|
+| **VNC** | `localhost:5900` |
+| **noVNC (Web)** | `http://localhost:6080` |
+
+---
 ## Overview
 
 This project provides a Docker container designed to run **legacy web applications** that rely on **Java applets**.
@@ -123,16 +131,4 @@ This base image provides:
 
 ---
 
-## Accessing the Container
-
-| Method | Address |
-|-------|---------|
-| **VNC** | `localhost:5901` |
-| **noVNC (Web)** | `http://localhost:6901` |
-
-**Default VNC password:**
-
-```
-headless
-```
 
