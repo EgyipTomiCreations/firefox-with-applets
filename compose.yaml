@@ -8,5 +8,5 @@ services:
     ports:
       - "5901:5901"  # VNC
       - "6901:6901"  # noVNC web
-
+      - "6080:6080"
     shm_size: "2gb"

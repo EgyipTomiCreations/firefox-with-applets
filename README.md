@@ -86,8 +86,7 @@ This combination allows NPAPI-based Java applets to run in a sandboxed environme
 
 Built on top of:
 
-- **accetto/ubuntu-vnc-xfce**  
-  https://github.com/accetto/ubuntu-vnc-xfce
+- **dcsunset/ubuntu-vnc:18.04**  
 
 This base image provides:
 

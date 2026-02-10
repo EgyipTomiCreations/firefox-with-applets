@@ -49,7 +49,7 @@ RUN git clone --branch 1.8 https://github.com/AdoptOpenJDK/IcedTea-Web.git \
  ############################
 # 2. RUNTIME STAGE
 ############################
-FROM accetto/ubuntu-vnc-xfce:latest
+FROM dcsunset/ubuntu-vnc:18.04
 
 USER root
 ENV DEBIAN_FRONTEND=noninteractive
@@ -102,8 +102,14 @@ RUN rm -f /opt/firefox/updater \
     /opt/firefox/update-settings.ini \
     /opt/firefox/updater.ini
 
+RUN useradd -ms /bin/bash headless
+WORKDIR /home/headless
+
 # ---- Firefox disable update ----
 COPY disable-update.js /home/headless/.mozilla/firefox/prefs.js
+
+# ---- Java security policy ----
+COPY java.policy /usr/lib/jvm/java-8-openjdk-amd64/jre/lib/security/java.policy
 
 # ---- GUI launcher ----
 COPY firefox-gui /usr/local/bin/firefox-gui.sh
@@ -114,5 +120,6 @@ RUN chmod +x /home/headless/Desktop/Firefox.desktop
 
 RUN chmod -R a+rwX /home/headless
 
-WORKDIR ${STARTUPDIR}
-ENTRYPOINT ["./vnc_startup.sh"]
+
+
+USER headless
