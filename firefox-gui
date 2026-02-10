@@ -1,0 +1,21 @@
+#!/bin/bash
+
+export DISPLAY=${DISPLAY:-:1.0}
+export HOME=/home/headless
+export XAUTHORITY=$HOME/.Xauthority
+
+# Firefox sandbox + shm fix
+export MOZ_DISABLE_CONTENT_SANDBOX=1
+export MOZ_DISABLE_GPU_SANDBOX=1
+export MOZ_DISABLE_RDD_SANDBOX=1
+export MOZ_WEBRENDER=0
+
+# ensure dirs
+mkdir -p "$HOME/.mozilla"
+chmod -R a+rwX "$HOME/.mozilla"
+
+exec firefox \
+  --no-remote \
+  --profile "$HOME/.mozilla/firefox" \
+  --disable-gpu \
+  --no-sandbox

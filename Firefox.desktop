@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Firefox
+Comment=Web Browser
+Exec=/usr/local/bin/firefox-gui.sh
+Icon=firefox
+Terminal=false
+Categories=Network;WebBrowser;
+StartupNotify=true

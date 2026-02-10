@@ -1,0 +1,12 @@
+services:
+  desktop:
+    build: .
+    container_name: firefox-with-applets-vnc
+    restart: always
+
+    # ports
+    ports:
+      - "5901:5901"  # VNC
+      - "6901:6901"  # noVNC web
+
+    shm_size: "2gb"
